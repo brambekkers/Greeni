@@ -203,7 +203,7 @@ const optionsSixthQuestion = ref(['Yes, I do!', "I'm planning to do!", 'No, not 
               <ToggleButton v-model="optionFiveFirstQuestion" onLabel="Work from Home" offLabel="Work from Home" />
             </div>
           </div>
-          <div class="flex pt-6 justify-end">
+          <div class="flex p-6 justify-end">
             <Button
               label="Next"
               icon="pi pi-arrow-right"
@@ -223,7 +223,7 @@ const optionsSixthQuestion = ref(['Yes, I do!', "I'm planning to do!", 'No, not 
               <i class="pi pi-warehouse" style="font-size: 2.5rem" />
             </div>
           </div>
-          <div class="flex pt-6 justify-between">
+          <div class="flex p-6 justify-between">
             <Button
               label="Back"
               severity="secondary"
@@ -253,7 +253,7 @@ const optionsSixthQuestion = ref(['Yes, I do!', "I'm planning to do!", 'No, not 
               </div>
             </div>
           </div>
-          <div class="flex pt-6 justify-between">
+          <div class="flex p-6 justify-between">
             <Button
               label="Back"
               severity="secondary"
@@ -280,7 +280,7 @@ const optionsSixthQuestion = ref(['Yes, I do!', "I'm planning to do!", 'No, not 
               <SelectButton v-model="valueFourthQuestion" :options="optionsFourthQuestion" aria-labelledby="basic" />
             </div>
           </div>
-          <div class="flex pt-6 justify-between">
+          <div class="flex p-6 justify-between">
             <Button
               label="Back"
               severity="secondary"
@@ -305,7 +305,7 @@ const optionsSixthQuestion = ref(['Yes, I do!', "I'm planning to do!", 'No, not 
               <SelectButton v-model="valueFifthQuestion" :options="optionsFifthQuestion" aria-labelledby="basic" />
             </div>
           </div>
-          <div class="flex pt-6 justify-between">
+          <div class="flex p-6 justify-between">
             <Button
               label="Back"
               severity="secondary"
@@ -332,7 +332,7 @@ const optionsSixthQuestion = ref(['Yes, I do!', "I'm planning to do!", 'No, not 
               <SelectButton v-model="valueSixthQuestion" :options="optionsSixthQuestion" aria-labelledby="basic" />
             </div>
           </div>
-          <div class="flex pt-6 justify-between">
+          <div class="flex p-6 justify-between">
             <Button
               label="Back"
               severity="secondary"
@@ -354,7 +354,7 @@ const optionsSixthQuestion = ref(['Yes, I do!', "I'm planning to do!", 'No, not 
           <div class="flex flex-col gap-2 mx-auto" style="min-height: 16rem; max-width: 24rem">
             <div class="text-center mt-4 mb-4 text-xl font-semibold">You successfully completed all the questions!</div>
           </div>
-          <div class="flex pt-6 justify-between">
+          <div class="flex p-6 justify-between">
             <Button
               label="Back"
               severity="secondary"
