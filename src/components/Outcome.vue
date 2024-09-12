@@ -2,7 +2,7 @@
 import Knob from 'primevue/knob';
 import Panel from 'primevue/panel';
 import Message from 'primevue/message';
-
+import { useGreeniStore } from '@/stores/greeni';
 import { useFormStore } from '@/stores/form';
 import { useResultStore } from '@/stores/result';
 
