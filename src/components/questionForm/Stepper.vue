@@ -13,42 +13,30 @@ import Divider from 'primevue/divider';
 import SelectButton from 'primevue/selectbutton';
 import RadioButton from 'primevue/radiobutton';
 
+import {useAnswersStore} from "@/stores/answers"
+const { 
+    optionOneFirstQuestion,
+    optionTwoFirstQuestion,
+    optionThreeFirstQuestion,
+    optionFourFirstQuestion,
+    optionFiveFirstQuestion,
+    valueSecondQuestion,
+    optionsSecondQuestion,
+    valueThirdQuestion,
+    optionsThirdQuestion,
+    valueFourthQuestion,
+    optionsFourthQuestion,
+    valueFifthQuestion,
+    optionsFifthQuestion,
+    valueSixthQuestion,
+    optionsSixthQuestion,
+  } = storeToRefs(useAnswersStore());
+
+
 defineEmits(['submit']);
 
 const activeStep = ref(1);
 
-//First question
-const optionOneFirstQuestion = ref(false);
-const optionTwoFirstQuestion = ref(false);
-const optionThreeFirstQuestion = ref(false);
-const optionFourFirstQuestion = ref(false);
-const optionFiveFirstQuestion = ref(false);
-
-//Second question
-
-const valueSecondQuestion = ref('House');
-const optionsSecondQuestion = ref(['House', 'Apartment']);
-
-//Third Question
-const valueThirdQuestion = ref('Weekly');
-const optionsThirdQuestion = ref([
-  { name: 'Daily', key: 'Daily' },
-  { name: 'Weekly', key: 'Weekly' },
-  { name: 'Bi-weekly', key: 'Bi-weekly' },
-  { name: 'Monthly', key: 'Monthly' },
-]);
-
-// Fourth Question
-const valueFourthQuestion = ref("I'm planning to do!");
-const optionsFourthQuestion = ref(['Yes, I do!', "I'm planning to do!", 'No, not my thing!']);
-
-// Fifth Question
-const valueFifthQuestion = ref('Somewhat conscious');
-const optionsFifthQuestion = ref(['Very conscious', 'Somewhat conscious', 'Not very conscious']);
-
-// Sixth Question
-const valueSixthQuestion = ref("I'm planning to do!");
-const optionsSixthQuestion = ref(['Yes, I do!', "I'm planning to do!", 'No, not my thing!']);
 </script>
 
 <template>
@@ -203,7 +191,7 @@ const optionsSixthQuestion = ref(['Yes, I do!', "I'm planning to do!", 'No, not 
               <ToggleButton v-model="optionFiveFirstQuestion" onLabel="Work from Home" offLabel="Work from Home" />
             </div>
           </div>
-          <div class="flex pt-6 justify-end">
+          <div class="flex p-6 justify-end">
             <Button
               label="Next"
               icon="pi pi-arrow-right"
@@ -223,7 +211,7 @@ const optionsSixthQuestion = ref(['Yes, I do!', "I'm planning to do!", 'No, not 
               <i class="pi pi-warehouse" style="font-size: 2.5rem" />
             </div>
           </div>
-          <div class="flex pt-6 justify-between">
+          <div class="flex p-6 justify-between">
             <Button
               label="Back"
               severity="secondary"
@@ -253,7 +241,7 @@ const optionsSixthQuestion = ref(['Yes, I do!', "I'm planning to do!", 'No, not 
               </div>
             </div>
           </div>
-          <div class="flex pt-6 justify-between">
+          <div class="flex p-6 justify-between">
             <Button
               label="Back"
               severity="secondary"
@@ -280,7 +268,7 @@ const optionsSixthQuestion = ref(['Yes, I do!', "I'm planning to do!", 'No, not 
               <SelectButton v-model="valueFourthQuestion" :options="optionsFourthQuestion" aria-labelledby="basic" />
             </div>
           </div>
-          <div class="flex pt-6 justify-between">
+          <div class="flex p-6 justify-between">
             <Button
               label="Back"
               severity="secondary"
@@ -305,7 +293,7 @@ const optionsSixthQuestion = ref(['Yes, I do!', "I'm planning to do!", 'No, not 
               <SelectButton v-model="valueFifthQuestion" :options="optionsFifthQuestion" aria-labelledby="basic" />
             </div>
           </div>
-          <div class="flex pt-6 justify-between">
+          <div class="flex p-6 justify-between">
             <Button
               label="Back"
               severity="secondary"
@@ -332,7 +320,7 @@ const optionsSixthQuestion = ref(['Yes, I do!', "I'm planning to do!", 'No, not 
               <SelectButton v-model="valueSixthQuestion" :options="optionsSixthQuestion" aria-labelledby="basic" />
             </div>
           </div>
-          <div class="flex pt-6 justify-between">
+          <div class="flex p-6 justify-between">
             <Button
               label="Back"
               severity="secondary"
@@ -354,7 +342,7 @@ const optionsSixthQuestion = ref(['Yes, I do!', "I'm planning to do!", 'No, not 
           <div class="flex flex-col gap-2 mx-auto" style="min-height: 16rem; max-width: 24rem">
             <div class="text-center mt-4 mb-4 text-xl font-semibold">You successfully completed all the questions!</div>
           </div>
-          <div class="flex pt-6 justify-between">
+          <div class="flex p-6 justify-between">
             <Button
               label="Back"
               severity="secondary"
