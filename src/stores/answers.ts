@@ -46,6 +46,48 @@ export const useAnswersStore = defineStore("answers", () => {
     "No, not my thing!",
   ]);
 
+  const calculateAnswerPoint = () => {
+    let score = 0;
+
+    // First question points
+    if (optionOneFirstQuestion.value) score += 1; // Car
+    if (optionTwoFirstQuestion.value) score += 2; // Public Transport
+    if (optionThreeFirstQuestion.value) score += 3; // Bike
+    if (optionFourFirstQuestion.value) score += 4; // Walk
+    if (optionFiveFirstQuestion.value) score += 5; // Work from Home
+
+    // Second question points
+    if (valueSecondQuestion.value === 'House') score += 2;
+    if (valueSecondQuestion.value === 'Apartment') score += 3;
+
+    // Third question points
+    if (valueThirdQuestion.value === 'Daily') score += 1;
+    if (valueThirdQuestion.value === 'Weekly') score += 2;
+    if (valueThirdQuestion.value === 'Bi-weekly') score += 3;
+    if (valueThirdQuestion.value === 'Monthly') score += 4;
+
+    // Fourth question points
+    if (valueFourthQuestion.value === "Yes, I do!") score += 3;
+    if (valueFourthQuestion.value === "I'm planning to do!") score += 2;
+    if (valueFourthQuestion.value === "No, not my thing!") score += 1;
+
+    // Fifth question points
+    if (valueFifthQuestion.value === 'Very conscious') score += 3;
+    if (valueFifthQuestion.value === 'Somewhat conscious') score += 2;
+    if (valueFifthQuestion.value === 'Not very conscious') score += 1;
+
+    // Sixth question points
+    if (valueSixthQuestion.value === "Yes, I do!") score += 3;
+    if (valueSixthQuestion.value === "I'm planning to do!") score += 2;
+    if (valueSixthQuestion.value === "No, not my thing!") score += 1;
+
+    const maxScore = 29;
+    const normalizedScore = score / maxScore;
+
+    const roundedFinalScore = normalizedScore.toFixed(2)
+    return roundedFinalScore;
+  }
+  
   return {
     optionOneFirstQuestion,
     optionTwoFirstQuestion,
@@ -62,5 +104,6 @@ export const useAnswersStore = defineStore("answers", () => {
     optionsFifthQuestion,
     valueSixthQuestion,
     optionsSixthQuestion,
+    calculateAnswerPoint
   };
 });

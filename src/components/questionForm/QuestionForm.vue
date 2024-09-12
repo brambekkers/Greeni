@@ -2,13 +2,15 @@
   import { storeToRefs } from 'pinia'
   import { useFormStore } from '@/stores/form'
   import { useGreeniStore } from '@/stores/greeni'
+  import { useAnswersStore } from '@/stores/answers'
 
   import Drawer from 'primevue/drawer'
-  import Card from 'primevue/card'
   import Stepper from './Stepper.vue'
+  import Card from 'primevue/card'
 
   const { visible, hasBeenSubmitted } = storeToRefs(useFormStore())
   const { status } = storeToRefs(useGreeniStore())
+  const { calculateAnswerPoint } = useAnswersStore()
 
   const submitForm = () => {
     visible.value = false
@@ -16,8 +18,6 @@
   }
 
   const close = () => {
-    visible.value = false
-
     if (hasBeenSubmitted.value) {
       status.value = 'loading'
     } else {
