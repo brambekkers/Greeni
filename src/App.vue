@@ -1,7 +1,18 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import FormPage from "./views/FormPage.vue";
+</script>
 
 <template>
   <main class="relative h-screen w-screen overflow-hidden">
-    <img class="absolute inset-0 object-cover" src="./assets/background.jpg" alt="Cool abn background" />
+    <img
+      class="absolute inset-0 object-cover z-0"
+      src="./assets/background.jpg"
+      alt="Cool abn background"
+    />
+    <div class="relative z-10">
+      <FormPage></FormPage>
+    </div>
   </main>
 </template>
+
+<style scoped></style>
