@@ -7,9 +7,9 @@ export const usePromptStore = defineStore('Prompt', () => {
 
   async function getGenericScore(transactions) {
     try {
-      const prompt = `Using the provided transaction array generate JSON output that calculates a green score for each transaction and category (groceries, dining, and transport). 
+      const prompt = `Using the provided TransactionArray generate JSON output that calculates a green score for each transaction and category (groceries, dining, and transport). 
         Base the green score on a scale of 1 to 10. 
-        Per category I would like a total of the transactions, total spent and an average green score.
+        Per category I would like a total of the transactions, total spent and an average green score and an average green score for all categories combined.
   
         \`\`\`json
         ${transactions}
