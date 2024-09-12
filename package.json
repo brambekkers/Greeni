@@ -10,11 +10,14 @@
   },
   "dependencies": {
     "@primevue/themes": "^4.0.7",
+    "motion": "^10.18.0",
+    "path": "^0.12.7",
     "pinia": "^2.2.2",
     "primevue": "^4.0.7",
     "vue": "^3.4.37"
   },
   "devDependencies": {
+    "@types/node": "^22.5.4",
     "@vitejs/plugin-vue": "^5.1.2",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.45",
