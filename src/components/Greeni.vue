@@ -5,6 +5,13 @@ import { storeToRefs } from 'pinia';
 import { useGreeniStore } from '../stores/greeni';
 import { useFormStore } from '../stores/form';
 
+// Texts
+import WelcomeText from './greeni/WelcomeText.vue';
+import SleepText from './greeni/SleepText.vue';
+
+import Idle from './greeni/Idle.vue';
+import Sleep from './greeni/Sleep.vue';
+
 // images
 import happy from '../assets/greeni/happy.png';
 import angry from '../assets/greeni/angry.png';
@@ -13,11 +20,11 @@ import wink from '../assets/greeni/wink.png';
 import sad from '../assets/greeni/sad.png';
 import shock from '../assets/greeni/shock.png';
 
-const { emotion, message } = storeToRefs(useGreeniStore());
+const { face, status, text, message } = storeToRefs(useGreeniStore());
 const { formVisible } = storeToRefs(useFormStore());
 
 const currentFace = computed(() => {
-  switch (emotion.value) {
+  switch (face.value) {
     case 'happy':
       return happy;
     case 'angry':
@@ -35,10 +42,10 @@ const currentFace = computed(() => {
   }
 });
 
-const changeEmotion = () => {
-  const emotions = ['happy', 'angry', 'jeej', 'wink', 'sad', 'shock'];
-  const newEmotionIndex = (emotions.indexOf(emotion.value) + 1) % emotions.length;
-  emotion.value = emotions[newEmotionIndex];
+const changeFace = () => {
+  const faces = ['happy', 'angry', 'jeej', 'wink', 'sad', 'shock'];
+  const newFaceIndex = (faces.indexOf(face.value) + 1) % face.length;
+  face.value = faces[newFaceIndex];
 };
 
 const openScreen = async () => {
@@ -59,7 +66,10 @@ const resetAnimation = async () => {
 
 const animationIdle = () => {
   animate('#greeni', { x: 0, y: 10 }, { duration: 2, repeat: Infinity, direction: 'alternate' });
-  setInterval(changeEmotion, 5000);
+};
+
+const animationSleep = () => {
+  animate('#greeni', { x: 100, y: 170, scale: 0.4 }, { duration: 0.7 });
 };
 
 watch(formVisible, async (isVisible) => {
@@ -69,6 +79,26 @@ watch(formVisible, async (isVisible) => {
   }
 });
 
+const sleepStatus = async () => {
+  text.value = 'sleep';
+  await resetAnimation();
+  setTimeout(() => {
+    animationSleep();
+    text.value = 'none';
+  }, 3000);
+};
+
+const idleStatus = async () => {
+  text.value = 'none';
+  await resetAnimation();
+  animationIdle();
+};
+
+watch(status, async (s) => {
+  if (s === 'sleep') sleepStatus();
+  if (s === 'idle') idleStatus();
+});
+
 onMounted(() => {
   animationIdle();
 });
@@ -76,6 +106,10 @@ onMounted(() => {
 
 <template>
   <section id="greeni" class="absolute right-10 bottom-32 text-red-600">
-    <img :src="currentFace" class="w-64" alt="Greeni" @click="openScreen" />
+    <Sleep v-if="status === 'sleep'" />
+    <Idle v-if="status === 'idle'" />
+    <!-- <img v-else :src="currentFace" class="w-64" alt="Greeni" @click="openScreen" /> -->
+    <WelcomeText v-if="text === 'welcome'" @open="openScreen" />
+    <SleepText v-if="text === 'sleep'" />
   </section>
 </template>
