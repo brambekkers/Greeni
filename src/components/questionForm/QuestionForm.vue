@@ -2,16 +2,19 @@
 import { storeToRefs } from 'pinia';
 import { useFormStore } from '@/stores/form';
 import { useGreeniStore } from '@/stores/greeni';
+import { useAnswersStore} from '@/stores/answers'
 
 import Drawer from 'primevue/drawer';
 import Stepper from './Stepper.vue';
 
 const { visible, hasBeenSubmitted } = storeToRefs(useFormStore());
 const { status } = storeToRefs(useGreeniStore());
+const { calculateAnswerPoint } = useAnswersStore();
 
 const submitForm = () => {
   visible.value = false;
   hasBeenSubmitted.value = true;
+  calculateAnswerPoint();
 };
 
 const test = () => {
