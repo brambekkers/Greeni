@@ -7,9 +7,10 @@ import { useFormStore } from '@/stores/form';
 import { useResultStore } from '@/stores/result';
 
 // Texts
-import WelcomeText from './greeni/WelcomeText.vue';
-import SleepText from './greeni/SleepText.vue';
-import ResultText from './greeni/ResultText.vue';
+import WelcomeText from './textBaloon/Welcome.vue';
+import SleepText from './textBaloon/Sleep.vue';
+import ResultText from './textBaloon/Result.vue';
+import IdleText from './textBaloon/Idle.vue';
 
 import Idle from './greeni/Idle.vue';
 import Sleep from './greeni/Sleep.vue';
@@ -55,14 +56,6 @@ const animationLoad = () => {
   animate('#greeni', { rotate: 360 }, { duration: 2, repeat: Infinity });
 };
 
-watch(formVisible, async (isVisible) => {
-  if (!isVisible) {
-    await resetAnimation();
-    animationIdle();
-    status.value = 'loading';
-  }
-});
-
 const leaveStatus = async () => {
   text.value = 'sleep';
   status.value = 'speak';
@@ -70,6 +63,18 @@ const leaveStatus = async () => {
 };
 
 const idleStatus = async () => {
+  text.value = 'idle';
+
+  await resetAnimation();
+  animationIdle();
+};
+
+const speakStatus = async () => {
+  await resetAnimation();
+  animationIdle();
+};
+
+const loadingStatus = async () => {
   await resetAnimation();
   animationIdle();
 };
@@ -85,7 +90,8 @@ watch(status, async (s) => {
   if (s === 'sleep') animationSleep();
   if (s === 'idle') idleStatus();
   if (s === 'loading') loadStatus();
-  if (s === 'speak') idleStatus();
+  if (s === 'speak') speakStatus();
+  if (s === 'loading') loadingStatus();
 });
 
 onMounted(() => {
@@ -104,5 +110,6 @@ onMounted(() => {
     <WelcomeText v-if="text === 'welcome'" @open="openScreen('form')" />
     <SleepText v-if="text === 'sleep'" />
     <ResultText v-if="text === 'message'" @open="openScreen('result')" />
+    <IdleText v-if="text === 'idle'" @open="openScreen('result')" />
   </section>
 </template>
