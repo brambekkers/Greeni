@@ -7,7 +7,7 @@ import Greeni from '@/components/Greeni.vue';
   <main class="relative h-screen w-screen overflow-hidden">
     <img
       class="absolute inset-0 object-cover z-0"
-      src="./assets/background.jpg"
+      src="./assets/background.png"
       alt="Cool abn background"
     />
     <div class="relative z-10">
