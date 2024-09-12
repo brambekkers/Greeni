@@ -7,7 +7,7 @@ import { useRoute } from 'vue-router';
 const { statements, fetchStatements } = useStatementstore();
 
 const route = useRoute();
-fetchStatements(route.params.person[0]);
+fetchStatements(route.params?.person?.[0]);
 </script>
 
 <template>
