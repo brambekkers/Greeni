@@ -6,7 +6,6 @@ import sophiaStatements from '../assets/data/sophia/bankstatements.json';
 
 export const useStatementstore = defineStore('statements', () => {
   const statementData: any = ref([]);
-  const statements = computed(() => statementData);
 
   function fetchStatements(person: string | undefined) {
     console.log(person);
@@ -23,5 +22,5 @@ export const useStatementstore = defineStore('statements', () => {
     }
   }
 
-  return { statements, fetchStatements };
+  return { statementData, fetchStatements };
 });
