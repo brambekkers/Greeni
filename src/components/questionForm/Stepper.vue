@@ -75,14 +75,14 @@ const optionsSixthQuestion = ref(["Yes, I do!", "I'm planning to do!", "No, not 
                 :class="[
                   'rounded-full border-2 w-12 h-12 inline-flex items-center justify-center',
                   {
-                    'bg-primary text-primary-contrast border-primary':
+                    'bg-primary text-primary-contrast border-black':
                       value <= activeStep,
-                    'border-surface-200 dark:border-surface-700':
+                    'border-primary':
                       value > activeStep,
                   },
                 ]"
               >
-                <i class="pi pi-car" />
+                <i class="pi pi-car" :style="{ color: value <= activeStep ? '#edf7f7' : '#00716b' }" />
               </span>
             </button>
             <Divider />
@@ -107,14 +107,14 @@ const optionsSixthQuestion = ref(["Yes, I do!", "I'm planning to do!", "No, not 
                 :class="[
                   'rounded-full border-2 w-12 h-12 inline-flex items-center justify-center',
                   {
-                    'bg-primary text-primary-contrast border-primary':
+                    'bg-primary text-primary-contrast border-black':
                       value <= activeStep,
-                    'border-surface-200 dark:border-surface-700':
+                    'border-primary':
                       value > activeStep,
                   },
                 ]"
               >
-                <i class="pi pi-home" />
+                <i class="pi pi-home" :style="{ color: value <= activeStep ? '#edf7f7' : '#00716b' }" />
               </span>
             </button>
             <Divider />
@@ -139,14 +139,14 @@ const optionsSixthQuestion = ref(["Yes, I do!", "I'm planning to do!", "No, not 
                 :class="[
                   'rounded-full border-2 w-12 h-12 inline-flex items-center justify-center',
                   {
-                    'bg-primary text-primary-contrast border-primary':
+                    'bg-primary text-primary-contrast border-black':
                       value <= activeStep,
-                    'border-surface-200 dark:border-surface-700':
+                    'border-primary':
                       value > activeStep,
                   },
                 ]"
               >
-                <i class="pi pi-shopping-cart" />
+                <i class="pi pi-shopping-cart" :style="{ color: value <= activeStep ? '#edf7f7' : '#00716b' }"  />
               </span>
             </button>
             <Divider />
@@ -171,14 +171,14 @@ const optionsSixthQuestion = ref(["Yes, I do!", "I'm planning to do!", "No, not 
                 :class="[
                   'rounded-full border-2 w-12 h-12 inline-flex items-center justify-center',
                   {
-                    'bg-primary text-primary-contrast border-primary':
+                    'bg-primary text-primary-contrast border-black':
                       value <= activeStep,
-                    'border-surface-200 dark:border-surface-700':
+                    'border-primary':
                       value > activeStep,
                   },
                 ]"
               >
-                <i class="pi pi-trash" />
+                <i class="pi pi-trash" :style="{ color: value <= activeStep ? '#edf7f7' : '#00716b' }" />
               </span>
             </button>
             <Divider />
@@ -203,14 +203,14 @@ const optionsSixthQuestion = ref(["Yes, I do!", "I'm planning to do!", "No, not 
                 :class="[
                   'rounded-full border-2 w-12 h-12 inline-flex items-center justify-center',
                   {
-                    'bg-primary text-primary-contrast border-primary':
+                    'bg-primary text-primary-contrast border-black':
                       value <= activeStep,
-                    'border-surface-200 dark:border-surface-700':
+                    'border-primary':
                       value > activeStep,
                   },
                 ]"
               >
-                <i class="pi pi-chart-scatter" />
+                <i class="pi pi-chart-scatter" :style="{ color: value <= activeStep ? '#edf7f7' : '#00716b' }"  />
               </span>
             </button>
             <Divider />
@@ -235,14 +235,14 @@ const optionsSixthQuestion = ref(["Yes, I do!", "I'm planning to do!", "No, not 
                 :class="[
                   'rounded-full border-2 w-12 h-12 inline-flex items-center justify-center',
                   {
-                    'bg-primary text-primary-contrast border-primary':
+                    'bg-primary text-primary-contrast border-black':
                       value <= activeStep,
-                    'border-surface-200 dark:border-surface-700':
+                    'border-primary':
                       value > activeStep,
                   },
                 ]"
               >
-                <i class="pi pi-bolt" />
+                <i class="pi pi-bolt" :style="{ color: value <= activeStep ? '#edf7f7' : '#00716b' }"/>
               </span>
             </button>
             <Divider />
@@ -264,14 +264,14 @@ const optionsSixthQuestion = ref(["Yes, I do!", "I'm planning to do!", "No, not 
                 :class="[
                   'rounded-full border-2 w-12 h-12 inline-flex items-center justify-center',
                   {
-                    'bg-primary text-primary-contrast border-primary':
+                    'bg-primary text-primary-contrast border-black':
                       value <= activeStep,
-                    'border-surface-200 dark:border-surface-700':
+                    'border-primary':
                       value > activeStep,
                   },
                 ]"
               >
-                <i class="pi pi-check-circle" />
+                <i class="pi pi-check-circle" :style="{ color: value <= activeStep ? '#edf7f7' : '#00716b' }" />
               </span>
             </button>
           </div>

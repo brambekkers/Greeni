@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia';
 import { useFormStore } from '@/stores/form';
 import Drawer from 'primevue/drawer';
 import Stepper from './Stepper.vue';
 
 const { formVisible } = storeToRefs(useFormStore());
-import { storeToRefs } from 'pinia';
 </script>
 
 <template>
