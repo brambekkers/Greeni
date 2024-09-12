@@ -1,5 +1,5 @@
 <script setup>
-import FormPage from '../views/FormPage.vue';
+import QuestionForm from '@/components/questionForm/QuestionForm.vue';
 import Greeni from '@/components/Greeni.vue';
 import { useStatementstore } from '../stores/statements';
 import { useRoute } from 'vue-router';
@@ -18,7 +18,7 @@ fetchStatements(route.params?.person?.[0]);
       alt="Cool abn background"
     />
     <div class="relative z-10">
-      <FormPage></FormPage>
+      <QuestionForm></QuestionForm>
     </div>
     <Greeni />
   </main>
