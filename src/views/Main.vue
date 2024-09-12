@@ -1,6 +1,13 @@
 <script setup>
 import FormPage from '../views/FormPage.vue';
 import Greeni from '@/components/Greeni.vue';
+import { useStatementstore } from '../stores/statements';
+import { useRoute } from 'vue-router';
+
+const { statements, fetchStatements } = useStatementstore();
+
+const route = useRoute();
+fetchStatements(route.params.person[0]);
 </script>
 
 <template>
