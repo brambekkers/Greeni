@@ -2,7 +2,7 @@ import { ref } from 'vue';
 import { defineStore } from 'pinia';
 
 export const useFormStore = defineStore('form', () => {
-  const formVisible = ref<boolean>(false);
+  const visible = ref<boolean>(false);
 
-  return { formVisible };
+  return { visible };
 });

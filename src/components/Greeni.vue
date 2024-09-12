@@ -2,8 +2,9 @@
 import { onMounted, computed, watch } from 'vue';
 import { animate } from 'motion';
 import { storeToRefs } from 'pinia';
-import { useGreeniStore } from '../stores/greeni';
-import { useFormStore } from '../stores/form';
+import { useGreeniStore } from '@/stores/greeni';
+import { useFormStore } from '@/stores/form';
+import { useResultStore } from '@/stores/result';
 
 // Texts
 import WelcomeText from './greeni/WelcomeText.vue';
@@ -16,9 +17,10 @@ import Loading from './greeni/Loading.vue';
 import Speak from './greeni/Speak.vue';
 
 const { status, text } = storeToRefs(useGreeniStore());
-const { formVisible } = storeToRefs(useFormStore());
+const { visible: formVisible } = storeToRefs(useFormStore());
+const { visible: outcomeVisible } = storeToRefs(useResultStore());
 
-const openScreen = async () => {
+const openScreen = async (type) => {
   // remove current animation
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
@@ -28,7 +30,13 @@ const openScreen = async () => {
 
   text.value = 'none';
   animate('#greeni', { x, y, scale, rotate: 0, opacity: 0 }, { duration: 0.5 });
-  formVisible.value = true;
+
+  if (type === 'form') {
+    formVisible.value = true;
+  }
+  if (type === 'result') {
+    outcomeVisible.value = true;
+  }
 };
 
 const resetAnimation = async () => {
@@ -93,8 +101,8 @@ onMounted(() => {
     <Loading v-if="status === 'loading'" />
     <Speak v-if="status === 'speak'" />
     <!-- Text baloon -->
-    <WelcomeText v-if="text === 'welcome'" @open="openScreen" />
+    <WelcomeText v-if="text === 'welcome'" @open="openScreen('form')" />
     <SleepText v-if="text === 'sleep'" />
-    <ResultText v-if="text === 'message'" />
+    <ResultText v-if="text === 'message'" @open="openScreen('result')" />
   </section>
 </template>
