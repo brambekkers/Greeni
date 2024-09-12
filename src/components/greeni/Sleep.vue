@@ -31,5 +31,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <img :src="currentFace" class="w-64 transition-all hover:scale-110" alt="Greeni idle" @click="wake" />
+  <img :src="currentFace" class="w-64 transition-all hover:scale-110 cursor-pointer" alt="Greeni idle" @click="wake" />
 </template>
