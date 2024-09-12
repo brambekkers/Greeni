@@ -26,7 +26,7 @@ const { status } = storeToRefs(useGreeniStore());
         caret=""
         @sentence:typed="showButtons = true"
       />
-      <Button v-if="showButtons" label="Sure" class="!w-full mb-2 !bg-[#005e5d] !text-white" @click="$emit('open')" />
+      <Button v-if="showButtons" label="Sure" class="!w-full mb-2 !bg-[#005e5d] !border-[#005e5d] !text-white" @click="$emit('open')" />
       <Button v-if="showButtons" label="No, thank you" class="!w-full !bg-[#edf7f7] !text-[#005e5d]" @click="status = 'leave'" />
     </template>
   </Card>
