@@ -8,16 +8,15 @@ export const useStatementstore = defineStore('statements', () => {
   const statementData: any = ref([]);
 
   function fetchStatements(person: string | undefined) {
-    console.log(person);
     switch (person) {
       case 'sander':
-        statementData.value = sanderStatements;
+        statementData.value = JSON.stringify(sanderStatements);
         return;
       case 'sophia':
-        statementData.value = sophiaStatements;
+        statementData.value = JSON.stringify(sophiaStatements);
         return;
       default:
-        statementData.value = dideStatements;
+        statementData.value = JSON.stringify(dideStatements);
         return;
     }
   }

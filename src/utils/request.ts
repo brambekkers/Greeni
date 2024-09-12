@@ -8,8 +8,14 @@ export const useAxios = async <T>(
   data?: data
 ): Promise<AxiosResponse<T>> => {
   try {
-    const axiosInstance = axios.create();
+    const axiosInstance = axios.create({
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
 
+    console.log('data in axios', data);
     return axiosInstance({
       method,
       url: uri,

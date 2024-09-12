@@ -11,13 +11,14 @@ import Greeni from '@/components/Greeni.vue';
 const { statementData } = storeToRefs(useStatementstore());
 const { getGenericScore, genericScoreAnswer } = storeToRefs(usePromptStore());
 const route = useRoute();
+
 async function init() {
   await useStatementstore().fetchStatements(route.params?.person?.[0]);
 }
 
 watch(statementData, async () => {
   try {
-    await usePromptStore(statementData);
+    await usePromptStore().getGenericScore(statementData);
   } catch (error) {
     console.log(error, JSON.stringify(error));
   }
