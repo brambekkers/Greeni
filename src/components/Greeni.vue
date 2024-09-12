@@ -8,45 +8,15 @@ import { useFormStore } from '../stores/form';
 // Texts
 import WelcomeText from './greeni/WelcomeText.vue';
 import SleepText from './greeni/SleepText.vue';
+import ResultText from './greeni/ResultText.vue';
 
 import Idle from './greeni/Idle.vue';
 import Sleep from './greeni/Sleep.vue';
+import Loading from './greeni/Loading.vue';
+import Speak from './greeni/Speak.vue';
 
-// images
-import happy from '../assets/greeni/happy.png';
-import angry from '../assets/greeni/angry.png';
-import jeej from '../assets/greeni/jeej.png';
-import wink from '../assets/greeni/wink.png';
-import sad from '../assets/greeni/sad.png';
-import shock from '../assets/greeni/shock.png';
-
-const { face, status, text, message } = storeToRefs(useGreeniStore());
+const { status, text } = storeToRefs(useGreeniStore());
 const { formVisible } = storeToRefs(useFormStore());
-
-const currentFace = computed(() => {
-  switch (face.value) {
-    case 'happy':
-      return happy;
-    case 'angry':
-      return angry;
-    case 'jeej':
-      return jeej;
-    case 'wink':
-      return wink;
-    case 'sad':
-      return sad;
-    case 'shock':
-      return shock;
-    default:
-      return happy;
-  }
-});
-
-const changeFace = () => {
-  const faces = ['happy', 'angry', 'jeej', 'wink', 'sad', 'shock'];
-  const newFaceIndex = (faces.indexOf(face.value) + 1) % face.length;
-  face.value = faces[newFaceIndex];
-};
 
 const openScreen = async () => {
   // remove current animation
@@ -56,12 +26,13 @@ const openScreen = async () => {
   const y = -(windowHeight / 1.7);
   const scale = (windowWidth / 256) * 3;
 
-  await animate('#greeni', { x, y, scale, rotate: 0 }, { duration: 0.5 }).finished;
+  text.value = 'none';
+  animate('#greeni', { x, y, scale, rotate: 0, opacity: 0 }, { duration: 0.5 });
   formVisible.value = true;
 };
 
 const resetAnimation = async () => {
-  await animate('#greeni', { x: 0, y: 0, rotate: 0, scale: 1 }, { duration: 0.2 }).finished;
+  await animate('#greeni', { x: 0, y: 0, rotate: 0, scale: 1, opacity: 1 }, { duration: 0.2 }).finished;
 };
 
 const animationIdle = () => {
@@ -72,31 +43,41 @@ const animationSleep = () => {
   animate('#greeni', { x: 100, y: 170, scale: 0.4 }, { duration: 0.7 });
 };
 
+const animationLoad = () => {
+  animate('#greeni', { rotate: 360 }, { duration: 2, repeat: Infinity });
+};
+
 watch(formVisible, async (isVisible) => {
   if (!isVisible) {
     await resetAnimation();
     animationIdle();
+    status.value = 'loading';
   }
 });
 
-const sleepStatus = async () => {
+const leaveStatus = async () => {
   text.value = 'sleep';
+  status.value = 'speak';
   await resetAnimation();
-  setTimeout(() => {
-    animationSleep();
-    text.value = 'none';
-  }, 3000);
 };
 
 const idleStatus = async () => {
-  text.value = 'none';
   await resetAnimation();
   animationIdle();
 };
 
+const loadStatus = async () => {
+  text.value = 'none';
+  await resetAnimation();
+  animationLoad();
+};
+
 watch(status, async (s) => {
-  if (s === 'sleep') sleepStatus();
+  if (s === 'leave') leaveStatus();
+  if (s === 'sleep') animationSleep();
   if (s === 'idle') idleStatus();
+  if (s === 'loading') loadStatus();
+  if (s === 'speak') idleStatus();
 });
 
 onMounted(() => {
@@ -106,10 +87,14 @@ onMounted(() => {
 
 <template>
   <section id="greeni" class="absolute right-10 bottom-32 text-red-600">
+    <!-- Greeni -->
     <Sleep v-if="status === 'sleep'" />
     <Idle v-if="status === 'idle'" />
-    <!-- <img v-else :src="currentFace" class="w-64" alt="Greeni" @click="openScreen" /> -->
+    <Loading v-if="status === 'loading'" />
+    <Speak v-if="status === 'speak'" />
+    <!-- Text baloon -->
     <WelcomeText v-if="text === 'welcome'" @open="openScreen" />
     <SleepText v-if="text === 'sleep'" />
+    <ResultText v-if="text === 'message'" />
   </section>
 </template>

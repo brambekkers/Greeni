@@ -12,4 +12,3 @@ import { storeToRefs } from 'pinia';
     <Stepper></Stepper>
   </Drawer>
 </template>
-

@@ -2,8 +2,8 @@ import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 
 type Face = 'happy' | 'shock' | 'sad' | 'angry' | 'jeej' | 'wink' | 'closed' | 'empty';
-type Status = 'idle' | 'sleep' | 'speak' | 'think' | 'error';
-type Text = 'welcome' | 'sleep' | 'none';
+type Status = 'idle' | 'sleep' | 'speak' | 'think' | 'error' | 'loading' | 'leave';
+type Text = 'welcome' | 'sleep' | 'message' | 'none';
 
 export const useGreeniStore = defineStore('greeni', () => {
   const face = ref<Face>('happy');
