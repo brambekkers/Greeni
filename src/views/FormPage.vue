@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
-
 import Drawer from "primevue/drawer";
+
+import Stepper from '@/components/Stepper.vue';
 
 const visible = ref(true);
 </script>
@@ -12,11 +13,7 @@ const visible = ref(true);
     header="Greeni is here, we have a couple questions for you!"
     position="full"
   >
-    <p>How are you feeling today?</p>
-    <div class="card flex justify-center gap-3">
-      <Button label="Too bad" />
-      <Button label="Hangover" />
-    </div>
+  <Stepper></Stepper>
   </Drawer>
   <div class="absolute right-0 top-1/2 transform -translate-y-1/2 m-4">
     <Button
