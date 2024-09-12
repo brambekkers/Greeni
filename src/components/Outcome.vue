@@ -50,14 +50,14 @@
     v-model:visible="visible"
     header="These are your results"
     position="full"
-    class="!bg-[#f9f9f9] !p-0"
+    class="!bg-[#f9f9f9] !p-0 !pb-5"
     pt:header="!hidden"
     pt:root="relative !border-none"
     pt:content="!p-0 !h-full overflow-y-visible">
     <div class="flex-grow">
       <!-- Header -->
       <div
-        class="h-52 bg-primary flex justify-center items-center"
+        class="h-40 bg-primary flex justify-center items-center"
         style="clip-path: ellipse(130% 238% at 50% -150%)">
         <h2 class="text-3xl font-bold text-[white] font-mono text-center -mt-6">These are your results</h2>
         <Button
