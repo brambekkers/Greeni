@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "composite": true,
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     }
   },
   "extends": ["./tsconfig.app.json", "./tsconfig.node.json"]
