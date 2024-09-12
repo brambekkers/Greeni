@@ -1,4 +1,7 @@
 <script setup>
+import { ref } from "vue";
+import { useRouter } from 'vue-router';
+
 import Stepper from "primevue/stepper";
 import StepList from "primevue/steplist";
 import StepPanels from "primevue/steppanels";
@@ -10,8 +13,11 @@ import Divider from "primevue/divider";
 import SelectButton from "primevue/selectbutton";
 import RadioButton from "primevue/radiobutton";
 
-import { ref } from "vue";
+const router = useRouter();
 
+const submitForm = () => {
+  router.go(0)
+}
 const activeStep = ref(1);
 const completed = ref(false);
 //First question 
@@ -27,21 +33,33 @@ const valueSecondQuestion = ref("House");
 const optionsSecondQuestion = ref(["House", "Apartment"]);
 
 //Third Question
-const ThirdQuestionChecked = ref(false);
-
-const ThirdQuestionCheckedClicked = () => {
-  console.log("value", ThirdQuestionChecked.value);
-};
+const valueThirdQuestion = ref('Weekly');
+const optionsThirdQuestion = ref([
+    { name: 'Daily', key: 'Daily' },
+    { name: 'Weekly', key: 'Weekly' },
+    { name: 'Bi-weekly', key: 'Bi-weekly' },
+    { name: 'Monthly', key: 'Monthly' }
+]);
 
 // Fourth Question
-const FourQuestionValue = ref('')
+const valueFourthQuestion = ref("I'm planning to do!");
+const optionsFourthQuestion = ref(["Yes, I do!", "I'm planning to do!", "No, not my thing!",]);
 
+// Fifth Question
+const valueFifthQuestion = ref("Somewhat conscious");
+const optionsFifthQuestion = ref(["Very conscious", "Somewhat conscious", "Not very conscious"]);
+
+// Sixth Question
+const valueSixthQuestion = ref("I'm planning to do!");
+const optionsSixthQuestion = ref(["Yes, I do!", "I'm planning to do!", "No, not my thing!",]);
 
 </script>
 <template>
   <div class="card flex justify-center">
+    <!--Step Bar-->
     <Stepper v-model:value="activeStep" class="basis-[40rem]">
       <StepList>
+        <!--Step One-->
         <Step
           v-slot="{ activateCallback, value, a11yAttrs }"
           asChild
@@ -70,6 +88,7 @@ const FourQuestionValue = ref('')
             <Divider />
           </div>
         </Step>
+        <!--Step Two-->
         <Step
           v-slot="{ activateCallback, value, a11yAttrs }"
           asChild
@@ -101,6 +120,7 @@ const FourQuestionValue = ref('')
             <Divider />
           </div>
         </Step>
+        <!--Step Three-->
         <Step
           v-slot="{ activateCallback, value, a11yAttrs }"
           asChild
@@ -132,6 +152,7 @@ const FourQuestionValue = ref('')
             <Divider />
           </div>
         </Step>
+        <!--Step Four-->
         <Step
           v-slot="{ activateCallback, value, a11yAttrs }"
           asChild
@@ -163,6 +184,7 @@ const FourQuestionValue = ref('')
             <Divider />
           </div>
         </Step>
+        <!--Step Five-->
         <Step
           v-slot="{ activateCallback, value, a11yAttrs }"
           asChild
@@ -194,6 +216,7 @@ const FourQuestionValue = ref('')
             <Divider />
           </div>
         </Step>
+        <!--Step Six-->
         <Step
           v-slot="{ activateCallback, value, a11yAttrs }"
           asChild
@@ -225,6 +248,7 @@ const FourQuestionValue = ref('')
             <Divider />
           </div>
         </Step>
+        <!--Step Seven-->
         <Step
           v-slot="{ activateCallback, value, a11yAttrs }"
           asChild
@@ -253,7 +277,9 @@ const FourQuestionValue = ref('')
           </div>
         </Step>
       </StepList>
+      <!--Questions-->
       <StepPanels>
+        <!--First Question-->
         <StepPanel v-slot="{ activateCallback }" :value="1">
           <div
             class="flex flex-col gap-2 mx-auto"
@@ -299,6 +325,7 @@ const FourQuestionValue = ref('')
             />
           </div>
         </StepPanel>
+        <!--Second Question-->
         <StepPanel v-slot="{ activateCallback }" :value="2">
           <div
             class="flex flex-col gap-2 mx-auto"
@@ -332,6 +359,7 @@ const FourQuestionValue = ref('')
             />
           </div>
         </StepPanel>
+        <!--Third Question-->
         <StepPanel v-slot="{ activateCallback }" :value="3">
           <div
             class="flex flex-col gap-2 mx-auto"
@@ -340,44 +368,14 @@ const FourQuestionValue = ref('')
             <div class="text-center mt-4 mb-4 text-xl font-semibold">
               How often do you shop for groceries?
             </div>
-            <div class="flex justify-center gap-4">
-                <div class="flex items-center">
-                  <RadioButton
-                    v-model="FourQuestionValue"
-                    inputId="shopping1"
-                    name="shopping"
-                    value="Daily"
-                  />
-                  <label for="shopping1" class="ml-2 hover:cursor-pointer">Daily</label>
-                </div>
-                <div class="flex items-center">
-                  <RadioButton
-                    v-model="FourQuestionValue"
-                    inputId="shopping2"
-                    name="shopping"
-                    value="Weekly"
-                  />
-                  <label for="shopping2" class="ml-2 hover:cursor-pointer">Weekly</label>
-                </div>
-                <div class="flex items-center">
-                  <RadioButton
-                    v-model="FourQuestionValue"
-                    inputId="shopping3"
-                    name="shopping"
-                    value="Bi-weekly"
-                  />
-                  <label for="shopping4" class="ml-2 hover:cursor-pointer">Bi-weekly</label>
-                </div>
-                <div class="flex items-center">
-                  <RadioButton
-                    v-model="FourQuestionValue"
-                    inputId="shopping4"
-                    name="shopping"
-                    value="Monthly"
-                  />
-                  <label for="shopping4" class="ml-2 hover:cursor-pointer">Monthly</label>
-                </div>
+            <div class="card flex justify-center">
+        <div class="flex flex-col gap-4">
+            <div v-for="category in optionsThirdQuestion" :key="category.key" class="flex items-center">
+                <RadioButton v-model="valueThirdQuestion" :inputId="category.key" name="dynamic" :value="category.name" />
+                <label :for="category.key" class="ml-2">{{ category.name }}</label>
             </div>
+        </div>
+    </div>
           </div>
           <div class="flex pt-6 justify-between">
             <Button
@@ -394,6 +392,7 @@ const FourQuestionValue = ref('')
             />
           </div>
         </StepPanel>
+        <!--Fourth Question-->
         <StepPanel v-slot="{ activateCallback }" :value="4">
           <div
             class="flex flex-col gap-2 mx-auto"
@@ -403,11 +402,11 @@ const FourQuestionValue = ref('')
               Do you currently practice any waste reduction habits? (e.g.,
               recycling, composting, using reusable bags)
             </div>
-            <div class="flex flex-wrap justify-center gap-7">
-              <ToggleButton
-                v-model="ThirdQuestionChecked"
-                onLabel="Yes :)"
-                offLabel="No :("
+            <div class="card flex justify-center">
+              <SelectButton
+                v-model="valueFourthQuestion"
+                :options="optionsFourthQuestion"
+                aria-labelledby="basic"
               />
             </div>
           </div>
@@ -426,6 +425,7 @@ const FourQuestionValue = ref('')
             />
           </div>
         </StepPanel>
+        <!--Fifth Question-->
         <StepPanel v-slot="{ activateCallback }" :value="5">
           <div
             class="flex flex-col gap-2 mx-auto"
@@ -434,11 +434,11 @@ const FourQuestionValue = ref('')
             <div class="text-center mt-4 mb-4 text-xl font-semibold">
               How conscious are you about your water usage?
             </div>
-            <div class="flex flex-wrap justify-center gap-7">
-              <ToggleButton
-                v-model="ThirdQuestionChecked"
-                onLabel="Yes :)"
-                offLabel="No :("
+            <div class="card flex justify-center">
+              <SelectButton
+                v-model="valueFifthQuestion"
+                :options="optionsFifthQuestion"
+                aria-labelledby="basic"
               />
             </div>
           </div>
@@ -457,6 +457,7 @@ const FourQuestionValue = ref('')
             />
           </div>
         </StepPanel>
+        <!--Sixth Question-->
         <StepPanel v-slot="{ activateCallback }" :value="6">
           <div
             class="flex flex-col gap-2 mx-auto"
@@ -466,12 +467,11 @@ const FourQuestionValue = ref('')
               Have you made any energy-efficient upgrades to your home? (e.g.,
               LED bulbs, energy-efficient appliances)
             </div>
-            <div class="flex flex-wrap justify-center gap-7">
-              <ToggleButton
-                @click="ThirdQuestionCheckedClicked"
-                v-model="ThirdQuestionChecked"
-                onLabel="Yes :)"
-                offLabel="No :("
+            <div class="card flex justify-center">
+              <SelectButton
+                v-model="valueSixthQuestion"
+                :options="optionsSixthQuestion"
+                aria-labelledby="basic"
               />
             </div>
           </div>
@@ -490,13 +490,14 @@ const FourQuestionValue = ref('')
             />
           </div>
         </StepPanel>
+        <!--Done info-->
         <StepPanel v-slot="{ activateCallback }" :value="7">
           <div
             class="flex flex-col gap-2 mx-auto"
             style="min-height: 16rem; max-width: 24rem"
           >
             <div class="text-center mt-4 mb-4 text-xl font-semibold">
-              You successfully completed questions!
+              You successfully completed all the questions!
             </div>
           </div>
           <div class="flex pt-6 justify-between">
@@ -507,10 +508,10 @@ const FourQuestionValue = ref('')
               @click="activateCallback(6)"
             />
             <Button
-              label="Close"
-              icon="pi pi-times"
+              label="Submit"
+              icon="pi pi-send"
               iconPos="right"
-              @click="closeForm()"
+              @click="submitForm()"
             />
           </div>
         </StepPanel>
