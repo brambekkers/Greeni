@@ -18,6 +18,7 @@
   }
 
   const close = () => {
+    visible.value = false
     if (hasBeenSubmitted.value) {
       status.value = 'loading'
     } else {
