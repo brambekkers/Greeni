@@ -236,7 +236,7 @@ const activeStep = ref(1);
               <div class="flex flex-col gap-4">
                 <div v-for="category in optionsThirdQuestion" :key="category.key" class="flex items-center">
                   <RadioButton v-model="valueThirdQuestion" :inputId="category.key" name="dynamic" :value="category.name" />
-                  <label :for="category.key" class="ml-2">{{ category.name }}</label>
+                  <label :for="category.key" class="ml-2 hover:cursor-pointer">{{ category.name }}</label>
                 </div>
               </div>
             </div>
