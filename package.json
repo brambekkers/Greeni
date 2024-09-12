@@ -15,7 +15,8 @@
     "pinia": "^2.2.2",
     "primeicons": "^7.0.0",
     "primevue": "^4.0.7",
-    "vue": "^3.4.37"
+    "vue": "^3.4.37",
+    "vue-router": "^4.4.4"
   },
   "devDependencies": {
     "@types/node": "^22.5.4",
