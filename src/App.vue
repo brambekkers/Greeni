@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import FormPage from "./views/FormPage.vue";
+import Greeni from '@/components/Greeni.vue';
 </script>
 
 <template>
@@ -12,6 +13,7 @@ import FormPage from "./views/FormPage.vue";
     <div class="relative z-10">
       <FormPage></FormPage>
     </div>
+    <Greeni />
   </main>
 </template>
 
