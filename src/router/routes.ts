@@ -1,7 +1,7 @@
 import Main from '../views/Main.vue';
 export const routes = [
   {
-    path: '/',
+    path: '/:person*',
     name: 'Main',
     component: Main,
   },
