@@ -7,7 +7,7 @@ export default {
     colors: {
       primary: '#00716b',
       secondary: '#fff200',
-      access:'#edf7f7'
+      accent:'#edf7f7'
     },
   },
   plugins: [],

@@ -322,6 +322,7 @@ const optionsSixthQuestion = ref(["Yes, I do!", "I'm planning to do!", "No, not 
               icon="pi pi-arrow-right"
               iconPos="right"
               @click="activateCallback(2)"
+              class="!bg-[#FFD200] !border-[#FFD200] !text-[#000000]"
             />
           </div>
         </StepPanel>
@@ -350,12 +351,14 @@ const optionsSixthQuestion = ref(["Yes, I do!", "I'm planning to do!", "No, not 
               severity="secondary"
               icon="pi pi-arrow-left"
               @click="activateCallback(1)"
+              class="!bg-[#edf7f7] !border-[#10b981] !text-[#005e5d]"
             />
             <Button
               label="Next"
               icon="pi pi-arrow-right"
               iconPos="right"
               @click="activateCallback(3)"
+              class="!bg-[#FFD200] !border-[#FFD200] !text-[#000000]"
             />
           </div>
         </StepPanel>
@@ -383,12 +386,14 @@ const optionsSixthQuestion = ref(["Yes, I do!", "I'm planning to do!", "No, not 
               severity="secondary"
               icon="pi pi-arrow-left"
               @click="activateCallback(2)"
+              class="!bg-[#edf7f7] !border-[#10b981] !text-[#005e5d]"
             />
             <Button
               label="Next"
               icon="pi pi-arrow-right"
               iconPos="right"
               @click="activateCallback(4)"
+              class="!bg-[#FFD200] !border-[#FFD200] !text-[#000000]"
             />
           </div>
         </StepPanel>
@@ -416,12 +421,14 @@ const optionsSixthQuestion = ref(["Yes, I do!", "I'm planning to do!", "No, not 
               severity="secondary"
               icon="pi pi-arrow-left"
               @click="activateCallback(3)"
+              class="!bg-[#edf7f7] !border-[#10b981] !text-[#005e5d]"
             />
             <Button
               label="Next"
               icon="pi pi-arrow-right"
               iconPos="right"
               @click="activateCallback(5)"
+              class="!bg-[#FFD200] !border-[#FFD200] !text-[#000000]"
             />
           </div>
         </StepPanel>
@@ -448,12 +455,14 @@ const optionsSixthQuestion = ref(["Yes, I do!", "I'm planning to do!", "No, not 
               severity="secondary"
               icon="pi pi-arrow-left"
               @click="activateCallback(4)"
+              class="!bg-[#edf7f7] !border-[#10b981] !text-[#005e5d]"
             />
             <Button
               label="Next"
               icon="pi pi-arrow-right"
               iconPos="right"
               @click="activateCallback(6)"
+              class="!bg-[#FFD200] !border-[#FFD200] !text-[#000000]"
             />
           </div>
         </StepPanel>
@@ -481,12 +490,14 @@ const optionsSixthQuestion = ref(["Yes, I do!", "I'm planning to do!", "No, not 
               severity="secondary"
               icon="pi pi-arrow-left"
               @click="activateCallback(5)"
+              class="!bg-[#edf7f7] !border-[#10b981] !text-[#005e5d]"
             />
             <Button
               label="Next"
               icon="pi pi-arrow-right"
               iconPos="right"
               @click="activateCallback(7)"
+              class="!bg-[#FFD200] !border-[#FFD200] !text-[#000000]"
             />
           </div>
         </StepPanel>
@@ -506,12 +517,14 @@ const optionsSixthQuestion = ref(["Yes, I do!", "I'm planning to do!", "No, not 
               severity="secondary"
               icon="pi pi-arrow-left"
               @click="activateCallback(6)"
+              class="!bg-[#edf7f7] !border-[#10b981] !text-[#005e5d]"
             />
             <Button
               label="Submit"
               icon="pi pi-send"
               iconPos="right"
               @click="submitForm()"
+              class="!bg-[#FFD200] !border-[#FFD200] !text-[#000000]"
             />
           </div>
         </StepPanel>
