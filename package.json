@@ -11,6 +11,7 @@
   "dependencies": {
     "@dmncodes/vue-typing": "^1.0.5",
     "@primevue/themes": "^4.0.7",
+    "axios": "^1.7.7",
     "motion": "^10.18.0",
     "path": "^0.12.7",
     "pinia": "^2.2.2",
