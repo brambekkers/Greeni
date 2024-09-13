@@ -3,12 +3,19 @@ import Header from './outcome/Header.vue';
 import Alert from './outcome/Alert.vue';
 import Overview from './outcome/Overview.vue';
 import Charts from './outcome/Charts.vue';
-
+import WeekOverview from './outcome/WeekOverview.vue';
+import { useGreeniStore } from '@/stores/greeni';
 import { useResultStore } from '@/stores/result';
 
 import { storeToRefs } from 'pinia';
 
+const { status } = storeToRefs(useGreeniStore());
 const { visible } = storeToRefs(useResultStore());
+
+const close = () => {
+  status.value = 'leave';
+  visible.value = false;
+};
 </script>
 
 <template>

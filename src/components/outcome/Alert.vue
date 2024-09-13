@@ -1,8 +1,9 @@
 <template>
-  <Message severity="secondary" class="!p-4 !bg-accent">
-    <h3 class="text-xl font-semibold mb-2">Understanding Your Green Score</h3>
-    Your Green Score reflects the environmental impact of your spending habits. By analyzing your account statements, we provide insights into how your
-    purchases contribute to sustainability. Aim for a higher score by making eco-friendly choices and track your progress towards a greener lifestyle.
+  <Message severity="secondary" class="!p-4">
+    <h3 class="text-xl font-bold">Description</h3>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis et molestias ut, illo maiores ipsum perspiciatis distinctio nemo nesciunt a consequatur
+    doloribus rerum alias aperiam illum dolor. Dicta, iure deserunt? Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis et molestias ut, illo
+    maiores ipsum perspiciatis distinctio nemo nesciunt a consequatur doloribus rerum alias aperiam illum dolor. Dicta, iure deserunt?
   </Message>
 </template>
 
