@@ -9,7 +9,7 @@ import SanderData from '../assets/data/sander/greenScoreData.json';
 import SophiaData from '../assets/data/sophia/greenScoreData.json';
 
 export const useResultStore = defineStore('result', () => {
-  const visible = ref(true);
+  const visible = ref(false);
 
   const route = useRoute();
 
