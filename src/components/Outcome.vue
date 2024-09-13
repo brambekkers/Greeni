@@ -2,6 +2,7 @@
 import Header from './outcome/Header.vue';
 import Alert from './outcome/Alert.vue';
 import Charts from './outcome/Charts.vue';
+import WeekOverview from './outcome/WeekOverview.vue';
 import { useGreeniStore } from '@/stores/greeni';
 import { useResultStore } from '@/stores/result';
 
