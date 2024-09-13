@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import Header from './outcome/Header.vue';
 import Alert from './outcome/Alert.vue';
+import Overview from './outcome/Overview.vue';
 import Charts from './outcome/Charts.vue';
 import WeekOverview from './outcome/WeekOverview.vue';
 import { useGreeniStore } from '@/stores/greeni';
 import { useResultStore } from '@/stores/result';
 
-import { computed } from 'vue';
 import { storeToRefs } from 'pinia';
 
 const { status } = storeToRefs(useGreeniStore());
@@ -36,7 +36,7 @@ const close = () => {
           <img src="../assets/handTree.jpg" class="w-full object-cover rounded-xl shadow-lg" />
           <WeekOverview />
         </div>
-        <div class="grid col-span-2 !mx-auto">
+        <div class="grid col-span-2 !mx-auto flex flex-col gap-4">
           <Alert />
           <Overview />
           <Charts />

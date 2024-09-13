@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import Chart from 'primevue/chart';
 import { ref, onMounted } from "vue";
+import { useResultStore } from '@/stores/result';
+import { storeToRefs } from 'pinia';
+
+const { resultPerson, resultPersonStatement, transactions, transactionDate, months, diningAmounts, transportationAmounts, groceriesAmounts} = storeToRefs(useResultStore());
 
 onMounted(() => {
   chartData.value = setChartData();
@@ -14,25 +18,25 @@ const setChartData = () =>  {
   const documentStyle = getComputedStyle(document.documentElement);
 
   return {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels: months.value,
       datasets: [
           {
               type: 'bar',
-              label: 'Dataset 1',
+              label: 'Dining',
               backgroundColor: documentStyle.getPropertyValue('--p-cyan-500'),
-              data: [50, 25, 12, 48, 90, 76, 42]
+              data: diningAmounts.value,
           },
           {
               type: 'bar',
-              label: 'Dataset 2',
+              label: 'Groceries',
               backgroundColor: documentStyle.getPropertyValue('--p-gray-500'),
-              data: [21, 84, 24, 75, 37, 65, 34]
+              data: groceriesAmounts.value,
           },
           {
               type: 'bar',
-              label: 'Dataset 3',
+              label: 'Transportation',
               backgroundColor: documentStyle.getPropertyValue('--p-orange-500'),
-              data: [41, 52, 24, 74, 23, 21, 32]
+              data: transportationAmounts.value
           }
       ]
   };
@@ -45,7 +49,7 @@ const setChartOptions = () =>  {
 
   return {
       maintainAspectRatio: false,
-      aspectRatio: 0.8,
+      aspectRatio: 1,
       plugins: {
           tooltips: {
               mode: 'index',
@@ -83,6 +87,7 @@ const setChartOptions = () =>  {
 
 <template>
     <div class="card">
+      <div>The top three categories on your monthly statement</div>
       <Chart type="bar" :data="chartData" :options="chartOptions" class="h-[30rem]" />
   </div>
 </template>
