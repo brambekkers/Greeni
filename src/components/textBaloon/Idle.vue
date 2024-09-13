@@ -19,7 +19,7 @@ const { status } = storeToRefs(useGreeniStore());
         :sentences="['Hello again! I am Greeni, your AI assistant. How can I help you?']"
         class="mb-3"
         :writeDelay="0"
-        :maxTypeSpeed="10"
+        :maxTypeSpeed="5"
         caret=""
         @sentence:typed="showButtons = true"
       />

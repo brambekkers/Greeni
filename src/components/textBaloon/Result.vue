@@ -19,7 +19,7 @@ const { status } = storeToRefs(useGreeniStore());
         :sentences="['Great news! Based on your account statements we see that your sustainability score is 92. That is above average! ']"
         class="mb-3"
         :writeDelay="0"
-        :maxTypeSpeed="10"
+        :maxTypeSpeed="5"
         caret=""
         @sentence:typed="showButtons = true"
       />

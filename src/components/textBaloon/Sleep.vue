@@ -24,7 +24,7 @@ const afterTextTyped = () => {
         :sentences="['Oke, good luck today. Im here in the bottom if you need me.']"
         class="inline"
         :writeDelay="0"
-        :maxTypeSpeed="10"
+        :maxTypeSpeed="5"
         caret=""
         @sentence:typed="afterTextTyped"
       />
