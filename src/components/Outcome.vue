@@ -4,18 +4,12 @@ import Alert from './outcome/Alert.vue';
 import Overview from './outcome/Overview.vue';
 import Charts from './outcome/Charts.vue';
 import WeekOverview from './outcome/WeekOverview.vue';
-import { useGreeniStore } from '@/stores/greeni';
+
 import { useResultStore } from '@/stores/result';
 
 import { storeToRefs } from 'pinia';
 
-const { status } = storeToRefs(useGreeniStore());
 const { visible } = storeToRefs(useResultStore());
-
-const close = () => {
-  status.value = 'leave';
-  visible.value = false;
-};
 </script>
 
 <template>
@@ -28,12 +22,12 @@ const close = () => {
     pt:root="relative !border-none"
     pt:content="!p-0 !h-full overflow-y-visible"
   >
-    <div class="flex-grow">
+    <div class="flex-grow mb-12">
       <!-- Header -->
       <Header />
       <section class="grid grid-cols-3 px-6 gap-6 mt-6">
         <div>
-          <img src="../assets/handTree.jpg" class="w-full object-cover rounded-xl shadow-lg" />
+          <img src="../assets/handTree.jpg" class="w-full object-cover rounded-xl shadow-lg mb-6" />
           <WeekOverview />
         </div>
         <div class="grid col-span-2 !mx-auto flex flex-col gap-4">

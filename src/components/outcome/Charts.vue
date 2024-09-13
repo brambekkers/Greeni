@@ -1,5 +1,5 @@
 <template>
-  <Panel header="Topics" pt:header="!text-xl" class="!p-4 !bg-[white]">
+  <Panel header="Topics" pt:header="!text-xl" class="!p-4 !bg-[white] !shadow-xl">
     <div class="grid grid-cols-3 gap-6">
       <div v-for="{ value, label, key } in list" :key="key" class="flex flex-col justify-center items-center">
         <Knob :model-value="value" :stroke-width="8" :size="125" :value-template="(v) => `${v}%`" />

@@ -6,3 +6,14 @@
 </template>
 
 <script setup lang="ts"></script>
+<script setup lang="ts">
+import { useGreeniStore } from '@/stores/greeni';
+import { useResultStore } from '@/stores/result';
+import { storeToRefs } from 'pinia';
+const { status } = storeToRefs(useGreeniStore());
+const { visible } = storeToRefs(useResultStore());
+const close = () => {
+  status.value = 'leave';
+  visible.value = false;
+};
+</script>

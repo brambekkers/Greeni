@@ -12,7 +12,7 @@ import SanderDataStatement from '../assets/data/sander/bankstatements.json';
 import SophiaDataStatement from '../assets/data/sophia/bankstatements.json';
 
 export const useResultStore = defineStore('result', () => {
-  const visible = ref(true);
+  const visible = ref(false);
 
   const route = useRoute();
 
@@ -50,15 +50,24 @@ export const useResultStore = defineStore('result', () => {
 
   const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-  const months = computed(() => [...new Set(transactionDate.value.map(transaction => {
-    const monthNumber = parseInt(transaction.date.split('-')[1], 10);
-    return monthNames[monthNumber - 1];
-  }))]);
+  const months = computed(() => [
+    ...new Set(
+      transactionDate.value.map((transaction) => {
+        const monthNumber = parseInt(transaction.date.split('-')[1], 10);
+        return monthNames[monthNumber - 1];
+      }),
+    ),
+  ]);
 
+  const diningAmounts = computed(() =>
+    transactions.value.filter((transaction) => transaction.category === 'dining').map((transaction) => transaction.amount_in_euros),
+  );
+  const groceriesAmounts = computed(() =>
+    transactions.value.filter((transaction) => transaction.category === 'groceries').map((transaction) => transaction.amount_in_euros),
+  );
+  const transportationAmounts = computed(() =>
+    transactions.value.filter((transaction) => transaction.category === 'transport').map((transaction) => transaction.amount_in_euros),
+  );
 
-  const diningAmounts = computed(() => transactions.value.filter(transaction => transaction.category === "dining").map(transaction => transaction.amount_in_euros));
-  const groceriesAmounts = computed(() => transactions.value.filter(transaction => transaction.category === "groceries").map(transaction => transaction.amount_in_euros));
-  const transportationAmounts = computed(() => transactions.value.filter(transaction => transaction.category === "transport").map(transaction => transaction.amount_in_euros));
-
-  return { visible, resultPerson, resultPersonStatement, transactions, transactionDate, months, diningAmounts, groceriesAmounts, transportationAmounts};
+  return { visible, resultPerson, resultPersonStatement, transactions, transactionDate, months, diningAmounts, groceriesAmounts, transportationAmounts };
 });
