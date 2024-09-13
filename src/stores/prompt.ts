@@ -14,7 +14,6 @@ export const usePromptStore = defineStore('Prompt', () => {
         { prompt }
       );
 
-      console.log(promptAnswer);
       genericScoreAnswer.value = promptAnswer;
     } catch (error) {
       console.log(error);

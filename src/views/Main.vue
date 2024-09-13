@@ -1,30 +1,14 @@
 <script setup>
-import { watch, onMounted } from 'vue';
-import { storeToRefs } from 'pinia';
+import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStatementstore } from '../stores/statements';
-import { usePromptStore } from '../stores/prompt';
 import QuestionForm from '@/components/questionForm/QuestionForm.vue';
 import Outcome from '@/components/Outcome.vue';
 import Greeni from '@/components/Greeni.vue';
 
-const { statementData } = storeToRefs(useStatementstore());
-const { getGenericScore, genericScoreAnswer } = storeToRefs(usePromptStore());
 const route = useRoute();
 
-async function init() {
-  await useStatementstore().fetchStatements(route.params?.person?.[0]);
-}
-
-watch(statementData, async () => {
-  try {
-    await usePromptStore().getGenericScore(statementData);
-  } catch (error) {
-    console.log(error, JSON.stringify(error));
-  }
-});
-
-onMounted(() => init());
+useStatementstore().fetchStatements(route.params?.person?.[0]);
 </script>
 
 <template>

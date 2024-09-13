@@ -1,11 +1,11 @@
 {
-  "average_green_score_all_categories": 6.33,
+  "overall_average_green_score": 6.33,
   "categories": {
     "groceries": {
       "total_transactions": 55,
       "total_spent": 2608.75,
       "average_green_score": 8,
-      "transaction_ids": [
+      "transactions_ids": [
         "TXN0001",
         "TXN0006",
         "TXN0012",
@@ -44,7 +44,7 @@
       "total_transactions": 55,
       "total_spent": 553.1,
       "average_green_score": 5,
-      "transaction_ids": [
+      "transactions_ids": [
         "TXN0004",
         "TXN0008",
         "TXN0011",
@@ -90,7 +90,7 @@
       "total_transactions": 55,
       "total_spent": 443.5,
       "average_green_score": 6,
-      "transaction_ids": [
+      "transactions_ids": [
         "TXN0002",
         "TXN0007",
         "TXN0013",
